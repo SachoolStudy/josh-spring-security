@@ -1,16 +1,17 @@
-package com.example.secu.sample.controller;
+package com.example.secu.user.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
 
 	
-//	@GetMapping("/login")
-//	public String login() {
-//		return "loginPage";
-//	}
+	@GetMapping("/loginPage")
+	public String login() {
+		return "loginPage";
+	}
 
 	@GetMapping("/loginSuccess")
 	public String loginSuccess() {
@@ -26,5 +27,10 @@ public class UserController {
 	public String logout() {
 		return "logout";
 	}	
+	
+	@PostMapping("/loginProcess")
+	public void loginProcess() {
+		System.out.println("로그인");
+	}
 
 }

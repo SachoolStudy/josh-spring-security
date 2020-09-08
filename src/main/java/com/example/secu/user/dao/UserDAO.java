@@ -1,6 +1,6 @@
-package com.example.secu.sample.dao;
+package com.example.secu.user.dao;
 
-import com.example.secu.sample.vo.UserVO;
+import com.example.secu.user.vo.UserVO;
 
 
 public interface UserDAO {

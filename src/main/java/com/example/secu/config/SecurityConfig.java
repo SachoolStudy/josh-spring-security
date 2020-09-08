@@ -9,7 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.example.secu.sample.service.UserService;
+import com.example.secu.handler.AuthSuccessHandler;
+import com.example.secu.user.service.UserService;
 
 @Configuration
 @EnableWebSecurity  //웹보안 설정
@@ -18,6 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserService userService;
+	 
+    @Autowired 
+    AuthSuccessHandler authSuccessHandler;
 	
 	@Override
 	public void configure(WebSecurity http) throws Exception{
@@ -31,10 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         		.authenticated()
         		.and()
     		.formLogin()
-    			//.loginPage("/login")
-                //.loginProcessingUrl("/login")
+    			.loginPage("/loginPage")
+                .loginProcessingUrl("/loginProcess")
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/loginSuccess", true)
+//                .defaultSuccessUrl("/loginSuccess", true)
+                .successHandler(authSuccessHandler) // 로그인 성공시 수행하는 클래스
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .permitAll()

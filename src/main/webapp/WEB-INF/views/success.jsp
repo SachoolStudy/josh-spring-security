@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Success</h1>
+	<p>상태 : ${ sessionScope.UserVO.id }</p>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.example.secu.sample.service;
+package com.example.secu.user.service;
 
 import javax.annotation.Resource;
 
@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.secu.sample.dao.UserDAO;
-import com.example.secu.sample.vo.UserVO;
+import com.example.secu.user.dao.UserDAO;
+import com.example.secu.user.vo.UserVO;
 
 
 @Service
@@ -20,11 +20,11 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		UserVO account = new UserVO();
+		UserVO user = new UserVO();
 		try {
-			account = userDAO.selectUserVO(username);
+			user = userDAO.selectUserVO(username);
 
-			if( account == null ) {
+			if( user == null ) {
 				throw new UsernameNotFoundException(username);
 			}
 		} catch (Exception e) {
@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
 			e.printStackTrace();
 		}
 		
-		return account;
+		return user;
 	}
 
 }

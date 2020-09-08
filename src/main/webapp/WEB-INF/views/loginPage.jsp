@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-	    <form class="form-signin" method="POST" action="/login">
+	    <form class="form-signin" method="POST" action="/loginProcess">
 	        <h2 class="form-signin-heading">Please sign in</h2>
 	        <label for="" class="sr-only">ID</label>
 	        <input type="text" name="username" class="form-control" placeholder="ID" required autofocus>
